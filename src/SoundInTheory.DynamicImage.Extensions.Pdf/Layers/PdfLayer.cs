@@ -17,6 +17,18 @@ namespace SoundInTheory.DynamicImage.Layers
 			set { this["PageNumber"] = value; }
 		}
 
+        public int Width
+        {
+            get { return (int)(this["Width"] ?? 96); }
+            set { this["Width"] = value; }
+        }
+
+        public int Height
+        {
+            get { return (int)(this["Height"] ?? 96); }
+            set { this["Height"] = value; }
+        }
+
 		public override bool HasFixedSize
 		{
 			get { return true; }
@@ -31,7 +43,7 @@ namespace SoundInTheory.DynamicImage.Layers
 			try
 			{
 				string filename = FileSourceHelper.ResolveFileName(context, SourceFileName);
-				GhostscriptWrapper.GeneratePageThumb(filename, outputFileName, PageNumber, 96, 96);
+                GhostscriptWrapper.GeneratePageThumb(filename, outputFileName, PageNumber, Width, Height);
 				Bitmap = new FastBitmap(File.ReadAllBytes(outputFileName));
 			}
 			finally

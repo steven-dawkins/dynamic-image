@@ -15,5 +15,17 @@ namespace SoundInTheory.DynamicImage.Fluent
 			Layer.PageNumber = pageNumber;
 			return this;
 		}
+
+        public PdfLayerBuilder SetWidth(int width)
+        {
+            Layer.Width = width;
+            return this;
+        }
+
+        public PdfLayerBuilder SetHeight(int height)
+        {
+            Layer.Height = height;
+            return this;
+        }
 	}
 }
